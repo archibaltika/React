@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task 5</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const colors = [
+            { id: 1, name: "red"},
+            { id: 2, name: "green"},
+            { id: 3, name: "blue"},
+        ]
+
+        const Color = ({ name }) => <option value={name}>{name}</option>
+
+        const List = () => {
+            return (
+                <select id="select" onChange={change}>
+                    {colors.map(color => <Color name={color.name} />)}
+                </select>
+            )
+        };
+
+        const change = () => {
+            const selected_color = document.getElementById("select").value;
+            const elem = document.getElementById('selected_color');
+            const color_obj = colors.find(obj => obj.name == selected_color);
+            elem.innerHTML = color_obj.name;
+        };
+
+        ReactDOM.render((
+            <div>
+                <h2>
+                    I'm a <span id="selected_color">red</span> Product!
+                </h2>
+                <List />
+            </div>
+        ), document.getElementById('root'))
+
+    </script>
+</body>
+
+</html>

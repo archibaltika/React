@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="result"></div>
+    <script type="text/babel">
+        const cities = [
+            { id: 1, name: "Chicago", image: 'chicago.jpg' },
+            { id: 2, name: "Los Angeles", image: 'los-angeles.jpg' },
+            { id: 3, name: "New York", image: 'new-york.jpg' },
+        ]
+
+        const City = ({ name }) => <option value={name}>{name}</option>
+
+        const List = () => {
+            return (
+                <select>
+                    {cities.map(city => <City key={city.id} name={city.name} />)}
+                </select>
+            )
+        }
+
+        ReactDOM.render(<List />, document.getElementById('result'))
+
+    </script>
+</body>
+
+</html>
